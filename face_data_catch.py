@@ -1,11 +1,10 @@
 import cv2 as cv2
-import sys
+#import sys
  
-from PIL import Image
+#from PIL import Image
 
 def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
     cv2.namedWindow(window_name)
-    
     #视频来源，可以选择摄像头或者视频
     #cap = cv2.VideoCapture(camera_idx)                
     cap = cv2.VideoCapture('E:/shenteng.mp4')
@@ -13,7 +12,7 @@ def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
     #告诉OpenCV使用人脸识别分类器（这里填你自己的OpenCV级联分类器地址）
     classfier = cv2.CascadeClassifier("C:\ProgramData\Anaconda3\pkgs\libopencv-4.0.1-hbb9e17c_0\Library\etc\haarcascades\haarcascade_frontalface_alt2.xml")
     
-    #识别出人脸后要画的边框的颜色，RGB格式
+    #识别出人脸后要画的边框的颜色，RGB格式q
     color = (0, 255, 0)
     num = 0    
     while cap.isOpened():
