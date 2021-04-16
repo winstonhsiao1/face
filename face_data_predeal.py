@@ -43,8 +43,7 @@ def resize_image(image, height = IMAGE_SIZE, width = IMAGE_SIZE):
 images = []
 labels = []
 def read_path(path_name):    
-    #读取训练数据
-    
+    #读取训练数据    
     for dir_item in os.listdir(path_name):
         #从初始路径开始叠加，合并成可识别的操作路径
         full_path = os.path.abspath(os.path.join(path_name, dir_item))
