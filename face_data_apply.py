@@ -15,7 +15,7 @@ model.load_weights('./model/face1')  # 读取模型权重参数
 color = (0, 255, 0)
 
 # 捕获指定摄像头的实时视频流
-cap = cv2.VideoCapture('E:/sissy.mp4')
+cap = cv2.VideoCapture('E:/shenteng.mp4')
 
 # 人脸识别分类器本地存储路径
 cascade_path = "C:\ProgramData\Anaconda3\pkgs\libopencv-4.0.1-hbb9e17c_0\Library\etc\haarcascades\haarcascade_frontalface_alt2.xml"
