@@ -37,7 +37,7 @@ def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
                 cv2.imwrite(img_name, image)
 
                 num += 1
-                if num > (catch_pic_num):  # 如果超过指定最大保存数量退出循环
+                if num > catch_pic_num:  # 如果超过指定最大保存数量退出循环
                     break
 
                 # 画出矩形框
