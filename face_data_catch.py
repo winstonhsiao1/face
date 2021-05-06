@@ -1,19 +1,21 @@
 import cv2 as cv2
+import os
 
 
 # import sys
-
+#
 # from PIL import Image
 
-def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
+def CatchPICFromVideo(window_name: str, camera_idx: int, catch_pic_num: int, path_name: str, person_name: str):
+    path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+
     cv2.namedWindow(window_name)
     # 视频来源，可以选择摄像头或者视频
     # cap = cv2.VideoCapture(camera_idx)
-    cap = cv2.VideoCapture('E:/shenteng.mp4')
+    cap = cv2.VideoCapture(path + '/' + person_name + '.mp4')
 
     # 告诉OpenCV使用人脸识别分类器（这里填你自己的OpenCV级联分类器地址）
-    classfier = cv2.CascadeClassifier(
-        "C:\ProgramData\Anaconda3\pkgs\libopencv-4.0.1-hbb9e17c_0\Library\etc\haarcascades\haarcascade_frontalface_alt2.xml")
+    classfier = cv2.CascadeClassifier(path + '\haarcascades\haarcascade_frontalface_alt2.xml')
 
     # 识别出人脸后要画的边框的颜色，RGB格式q
     color = (0, 255, 0)
@@ -48,7 +50,8 @@ def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
                 cv2.putText(frame, 'num:%d' % (num), (30, 30), font, 1, (255, 0, 0), 1)
 
                 # 超过指定最大保存数量结束程序
-        if num > (catch_pic_num): break
+        if num > catch_pic_num:
+            break
 
         # 显示图像
         cv2.imshow(window_name, frame)
@@ -62,4 +65,7 @@ def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
 
 
 if __name__ == '__main__':
-    CatchPICFromVideo("catch_face_data", 0, 200 - 1, 'E:/facedata/shenteng')  # 采集200张，保存在chengzihang这个文件夹下面
+    path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    # person_name = 'sissy'
+    person_name = 'shenteng'
+    CatchPICFromVideo("catch_face_data", 0, 200 - 1, path + '/facedata/' + person_name, person_name)  # 采集200张，保存在chengzihang这个文件夹下面
